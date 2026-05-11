@@ -1,6 +1,6 @@
 ---
 name: sau-wechat-publish
-description: SAU 创意IT俱乐部公众号排版 Skill。为用户生成蓝科技风公众号文章 HTML。触发词：排一篇推送、公众号排版、SAU排版、排一篇、公众号文章。用户提供文章内容 + 排版者姓名，AI 自动生成粘贴到微信编辑器即用的格式化 HTML。支持反复对话修改。
+description: SAU 创意IT俱乐部公众号排版 Skill。为用户生成格式化公众号文章 HTML。根据文章内容气质选择配色。触发词：排一篇推送、公众号排版、SAU排版、排一篇、公众号文章。用户提供文章内容 + 排版者姓名，AI 自动生成粘贴到微信编辑器即用的格式化 HTML。支持反复对话修改。
 ---
 
 # SAU 创意IT俱乐部 公众号排版
@@ -82,6 +82,18 @@ AI 不得自行撰写、补全、推测任何正文内容。
 
 - `{排版者姓名}` → 替换为用户提供的名字
 - `{底部GIF_base64}` → 读取 `assets/bottom.gif` 文件，实时计算 base64 后填入。`assets/bottom.gif` 是 skill 自带的固定 GIF 资源文件。
+
+## 资产文件路径指引
+
+`assets/bottom.gif` 是 skill 自带的固定 GIF 文件。
+读取时注意：
+
+- 如果知道当前 skill 目录路径，用相对路径读取
+- 否则尝试以下路径（按优先级）：
+  1. `~/.agents/skills/sau-wechat-publish/assets/bottom.gif`
+  2. `$env:USERPROFILE/.agents/skills/sau-wechat-publish/assets/bottom.gif`
+
+可以用 `python3 -c "import os; print(os.path.expanduser('~/.agents/skills/sau-wechat-publish/assets/bottom.gif'))"` 确认路径。
 
 ## 文档图片处理规则
 
